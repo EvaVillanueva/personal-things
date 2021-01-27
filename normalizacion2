@@ -1,0 +1,51 @@
+Why Normalize a Database?
+So why would anyone want to normalize their database?
+Why do we want to go through this manual process of rearranging the data?
+
+There are a few reasons we would want to go through this process:
+
+Make the database more efficient
+Prevent the same data from being stored in more than one place (called an “insert anomaly”)
+Prevent updates being made to some data but not others (called an “update anomaly”)
+Prevent data not being deleted when it is supposed to be, or from data being lost when it is not supposed to be (called a “delete anomaly”) • Ensure the data is accurate
+Reduce the storage space that a database takes up
+Ensure the queries on a database run as fast as possible
+Normalization in DBMS is done to achieve these points. Without normalization on a database, the data can be slow, incorrect, and messy.
+1NF
+First Normal Form  sets the very basic rules for an organized database:
+Eliminate duplicative columns from the same table.
+Create separate tables for each group of related data and identify each row with a unique column or set of columns (the primary key).
+
+2FN
+Second Normal Form (2NF)Further addresses the concept of removing duplicative data:
+Meet all the requirements of the first normal form.
+Remove subsets of data that apply to multiple rows of a table and place them in separate tables.
+Create relationships between these new tables and their predecessors through the use of foreign keys.
+
+3FN
+Third normal form (3NF) goes one large step further:
+meet all the requirements of the second normal form.
+Remove columns that are not dependent upon the primary key.
+
+What does this even mean? What is a transitive functional dependency?
+
+It means that every attribute that is not the primary key must depend on the primary key and the primary key only.
+For example:
+Column A determines column B
+Column B determines column C
+Therefore, column A determines C
+This means that column A determines column B which determines column C. This is a transitive functional dependency, and it should be removed. Column C should be in a separate table.
+
+We need to check if this is the case for any of our tables.
+
+BCNF or 3.5NF Boyce-Codd Normal Form 
+The Boyce-Codd Normal Form, also referred to as the "third and half (3.5) normal form", adds one more requirement:
+Meet all the requirements of the third normal form.
+Every determinant must be a candidate key.
+
+Fourth Normal Form (4NF)
+
+
+5NF 
+Solamente en contadas ocasiones una tabla 4NF no se corresponde con una 5NF. Estas son situaciones en las cuales una restricción compleja del mundo real, que limita las combinaciones válidas de los valores de atributos en la tabla 4NF, no está implícita en la estructura de esa tabla. Si esa tabla no se normaliza a 5NF.
+La tarea de mantener la consistencia lógica de los datos dentro de la tabla tenemos le riesgo de que los datos dentro de la tabla se vuelvan inconsistentes. Aplicando la 5NF eliminamos la posibilidad de tales inconsistencias.
